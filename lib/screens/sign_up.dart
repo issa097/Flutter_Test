@@ -1,6 +1,11 @@
+import 'dart:convert';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http show post;
 import 'package:untitled2/screens/login.dart';
+
+import '../core/utils/shared_preferences_helper.dart' show SharedPreferencesHelper;
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -11,11 +16,11 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   @override
-  TextEditingController emailController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController pasController = TextEditingController();
-  TextEditingController conpassController = TextEditingController();
-
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
+var isloding = false;
   Widget build(BuildContext context) {
     return Scaffold(
     //  resizeToAvoidBottomInset: true,
@@ -51,7 +56,7 @@ class _SignUpState extends State<SignUp> {
                 ),
                 SizedBox(height: 50,),
                 TextField(
-                  controller: emailController,
+                  controller: nameController,
                   decoration: InputDecoration(
                       label: Text("Email".tr()),
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(25),
@@ -65,7 +70,7 @@ class _SignUpState extends State<SignUp> {
             
             
                 TextField(
-                  controller: nameController,
+                  controller: pasController,
                   obscureText: true,
                   decoration: InputDecoration(
             
@@ -79,9 +84,9 @@ class _SignUpState extends State<SignUp> {
                 ),
                 SizedBox(height: 50,),
                 TextField(
-                  controller: pasController,
+                  controller: phoneController,
                   decoration: InputDecoration(
-                      label: Text("Email".tr()),
+                      label: Text("Phone".tr()),
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(25),
             
                       ),
@@ -93,11 +98,11 @@ class _SignUpState extends State<SignUp> {
             
             
                 TextField(
-                  controller: conpassController,
+                  controller: usernameController,
                   obscureText: true,
                   decoration: InputDecoration(
             
-                      label: Text("Password".tr()),
+                      label: Text("Username".tr()),
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(25),
             
                       ),
@@ -108,8 +113,8 @@ class _SignUpState extends State<SignUp> {
                 SizedBox(height: 50,),
             
                 ElevatedButton(onPressed: (){
-                  print("email : ${emailController.text}");
-                  print("pass : ${pasController.text}");
+
+                  sginup(name: nameController.text, Password: pasController.text, phone: phoneController.text, username: usernameController.text);
                 }, child: Text("Signup".tr())),
                 SizedBox(height: 50,),
             
@@ -136,5 +141,40 @@ class _SignUpState extends State<SignUp> {
 
 
     );
+  }
+
+
+
+
+
+  sginup ({required String name , required String Password , required String phone ,required String username})async{
+
+    isloding = true;
+    setState((){});
+    final res = await http.post(
+      Uri.parse("http://10.0.2.2:5027/api/RegisterModels/register"),
+      body: jsonEncode({"name": name, "password": Password , "phone":phone ,"username":username }),
+      headers: {"Content-Type":"application/json"},
+
+    );
+    isloding = false;
+    setState(() {
+
+    });
+    print(res.body);
+    print(res.statusCode);
+    print(res);
+    print(Password);
+
+    if (res.statusCode == 200) {
+
+
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Login()),
+      );
+    }
+
   }
 }
