@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class ListViewBulderScreen extends StatefulWidget {
@@ -15,6 +16,22 @@ class _ListViewBulderScreenState extends State<ListViewBulderScreen> {
       appBar: AppBar(
         title: Text("list builder1"),
         centerTitle: true,
+
+        actions: [
+
+          IconButton(onPressed: (){
+            if(context.locale.languageCode =='ar'){
+
+              context.setLocale(Locale('en'));
+
+            }else{
+              context.setLocale(Locale('ar'));
+
+            }
+
+          }, icon: Icon(Icons.language))
+
+        ],
       ),
 
       body: ListView.builder(
@@ -23,7 +40,7 @@ class _ListViewBulderScreenState extends State<ListViewBulderScreen> {
           return    Container(
             height: 50,
             color: Colors.amber[600],
-            child:  Center(child: Text(names[index])),
+            child:  Center(child: Text(names[index].tr())),
           );
         }
       ),

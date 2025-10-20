@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class ListViewSeparatorScreen extends StatefulWidget {
@@ -15,8 +16,23 @@ class _ListViewSeparatorScreenState extends State<ListViewSeparatorScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("list builder1"),
+        title: Text("list separator"),
         centerTitle: true,
+        actions: [
+
+          IconButton(onPressed: (){
+            if(context.locale.languageCode =='ar'){
+
+              context.setLocale(Locale('en'));
+
+            }else{
+              context.setLocale(Locale('ar'));
+
+            }
+
+          }, icon: Icon(Icons.language))
+
+        ],
       ),
 
       body: ListView.separated(
@@ -29,7 +45,7 @@ class _ListViewSeparatorScreenState extends State<ListViewSeparatorScreen> {
           return    Container(
             height: 50,
             color: Colors.amber[600],
-            child:  Center(child: Text(names[index])),
+            child:  Center(child: Text(names[index].tr())),
           );
         },
 

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class ListViewScreen  extends StatefulWidget {
@@ -15,6 +16,22 @@ class _ListViewScreenState extends State<ListViewScreen> {
     title: Text("list"),
 centerTitle: true,
 
+      actions: [
+
+        IconButton(onPressed: (){
+          if(context.locale.languageCode =='ar'){
+
+            context.setLocale(Locale('en'));
+
+          }else{
+            context.setLocale(Locale('ar'));
+
+          }
+
+        }, icon: Icon(Icons.language))
+
+      ],
+
 ),
 body:ListView(
   padding: const EdgeInsets.all(8),
@@ -22,108 +39,109 @@ body:ListView(
     Container(
       height: 50,
       color: Colors.amber[600],
-      child: const Center(child: Text('Entry A')),
+      child:  Center(child: Text("Entry A".tr())),
     ),
     Container(
       height: 50,
       color: Colors.amber[500],
-      child: const Center(child: Text('Entry B')),
+      child:  Center(child: Text("Entry B".tr())),
     ),
     Container(
       height: 50,
       color: Colors.amber[100],
-      child: const Center(child: Text('Entry C')),
+      child:  Center(child: Text("Entry C".tr())),
     ),
     Container(
       height: 50,
       color: Colors.amber[600],
-      child: const Center(child: Text('Entry A')),
+      child:  Center(child: Text("Entry A".tr())),
     ),
     Container(
       height: 50,
       color: Colors.amber[500],
-      child: const Center(child: Text('Entry B')),
+      child:  Center(child: Text("Entry B".tr())),
     ),
     Container(
       height: 50,
       color: Colors.amber[100],
-      child: const Center(child: Text('Entry C')),
+      child:  Center(child: Text("Entry C".tr())),
     ),
     Container(
       height: 50,
       color: Colors.amber[600],
-      child: const Center(child: Text('Entry A')),
+      child:  Center(child: Text("Entry A".tr())),
     ),
     Container(
       height: 50,
       color: Colors.amber[500],
-      child: const Center(child: Text('Entry B')),
+      child:  Center(child: Text("Entry B".tr())),
     ),
     Container(
       height: 50,
       color: Colors.amber[100],
-      child: const Center(child: Text('Entry C')),
+      child:  Center(child: Text("Entry C".tr())),
     ),
     Container(
       height: 50,
       color: Colors.amber[600],
-      child: const Center(child: Text('Entry A')),
+      child:  Center(child: Text("Entry A".tr())),
     ),
     Container(
       height: 50,
       color: Colors.amber[500],
-      child: const Center(child: Text('Entry B')),
+      child:  Center(child: Text("Entry B".tr())),
     ),
     Container(
       height: 50,
       color: Colors.amber[100],
-      child: const Center(child: Text('Entry C')),
-    ),
-    Container(
+      child:  Center(child: Text("Entry C".tr())),
+    ),    Container(
       height: 50,
       color: Colors.amber[600],
-      child: const Center(child: Text('Entry A')),
+      child:  Center(child: Text("Entry A".tr())),
     ),
     Container(
       height: 50,
       color: Colors.amber[500],
-      child: const Center(child: Text('Entry B')),
+      child:  Center(child: Text("Entry B".tr())),
     ),
     Container(
       height: 50,
       color: Colors.amber[100],
-      child: const Center(child: Text('Entry C')),
-    ),
-    Container(
+      child:  Center(child: Text("Entry C".tr())),
+    ),    Container(
       height: 50,
       color: Colors.amber[600],
-      child: const Center(child: Text('Entry A')),
+      child:  Center(child: Text("Entry A".tr())),
     ),
     Container(
       height: 50,
       color: Colors.amber[500],
-      child: const Center(child: Text('Entry B')),
+      child:  Center(child: Text("Entry B".tr())),
     ),
     Container(
       height: 50,
       color: Colors.amber[100],
-      child: const Center(child: Text('Entry C')),
-    ),
-    Container(
+      child:  Center(child: Text("Entry C".tr())),
+    ),    Container(
       height: 50,
       color: Colors.amber[600],
-      child: const Center(child: Text('Entry A')),
+      child:  Center(child: Text("Entry A".tr())),
     ),
     Container(
       height: 50,
       color: Colors.amber[500],
-      child: const Center(child: Text('Entry B')),
+      child:  Center(child: Text("Entry B".tr())),
     ),
     Container(
       height: 50,
       color: Colors.amber[100],
-      child: const Center(child: Text('Entry C')),
-    ), 
+      child:  Center(child: Text("Entry C".tr())),
+    ),
+
+
+
+
   ],
 ),
     );

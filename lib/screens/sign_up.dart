@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled2/screens/login.dart';
 
@@ -23,13 +24,28 @@ class _SignUpState extends State<SignUp> {
         title: Text("Login"),
         centerTitle: true,
         backgroundColor: Colors.blue,
+        actions: [
+
+          IconButton(onPressed: (){
+            if(context.locale.languageCode =='ar'){
+
+              context.setLocale(Locale('en'));
+
+            }else{
+              context.setLocale(Locale('ar'));
+
+            }
+
+          }, icon: Icon(Icons.language))
+
+        ],
       ),
       body: Center(
         child: Padding(padding: EdgeInsets.symmetric(horizontal: 24.0),
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Text("Welcome",
+                Text("Welcome".tr(),
                   style: TextStyle(color: Colors.blue , fontSize: 25),
             
                 ),
@@ -37,7 +53,7 @@ class _SignUpState extends State<SignUp> {
                 TextField(
                   controller: emailController,
                   decoration: InputDecoration(
-                      label: Text("Email"),
+                      label: Text("Email".tr()),
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(25),
             
                       ),
@@ -53,7 +69,7 @@ class _SignUpState extends State<SignUp> {
                   obscureText: true,
                   decoration: InputDecoration(
             
-                      label: Text("Password"),
+                      label: Text("Password".tr()),
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(25),
             
                       ),
@@ -65,7 +81,7 @@ class _SignUpState extends State<SignUp> {
                 TextField(
                   controller: pasController,
                   decoration: InputDecoration(
-                      label: Text("Email"),
+                      label: Text("Email".tr()),
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(25),
             
                       ),
@@ -81,7 +97,7 @@ class _SignUpState extends State<SignUp> {
                   obscureText: true,
                   decoration: InputDecoration(
             
-                      label: Text("Password"),
+                      label: Text("Password".tr()),
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(25),
             
                       ),
@@ -94,7 +110,7 @@ class _SignUpState extends State<SignUp> {
                 ElevatedButton(onPressed: (){
                   print("email : ${emailController.text}");
                   print("pass : ${pasController.text}");
-                }, child: Text("Login")),
+                }, child: Text("Signup".tr())),
                 SizedBox(height: 50,),
             
                 Row(
@@ -103,10 +119,10 @@ class _SignUpState extends State<SignUp> {
                     Text("alrady have an account?"),
                     TextButton(onPressed: (){
                       //Navigator.push(context, MaterialPageRoute(builder: (context)=> Login(),));
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Login(),));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> Login(),));
             
             
-                    }, child: Text("Login")),
+                    }, child: Text("Login".tr())),
                   ],
                 )
               ],

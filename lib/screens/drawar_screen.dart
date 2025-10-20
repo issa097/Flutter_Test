@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled2/screens/sign_up.dart' show SignUp;
 
 class DrawarScreen extends StatefulWidget {
   const DrawarScreen({super.key});
@@ -56,7 +57,7 @@ class _DrawarScreenState extends State<DrawarScreen> {
             ExpansionTile(title: Text("Profile"),children: [
               ListTile(
                 leading: const Icon(Icons.account_circle),
-                title: const Text('change pass'),
+                title:  Text('change pass'),
                 onTap: () {},
               ),
               ListTile(
@@ -69,7 +70,11 @@ class _DrawarScreenState extends State<DrawarScreen> {
             ListTile(
               leading: const Icon(Icons.account_circle),
               title: const Text('profile'),
-              onTap: () {},
+              onTap: () {
+
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> SignUp(),));
+
+              },
             ),
             ListTile(
               leading: const Icon(Icons.settings),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class ListViewGridScreen extends StatefulWidget {
@@ -15,8 +16,24 @@ class _ListViewGridScreenState extends State<ListViewGridScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("list builder1"),
+        title: Text("list grid"),
         centerTitle: true,
+
+        actions: [
+
+          IconButton(onPressed: (){
+            if(context.locale.languageCode =='ar'){
+
+              context.setLocale(Locale('en'));
+
+            }else{
+              context.setLocale(Locale('ar'));
+
+            }
+
+          }, icon: Icon(Icons.language))
+
+        ],
       ),
 
       body:
@@ -31,7 +48,7 @@ gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
               child: Container(
                 height: 50,
                 color: Colors.amber[600],
-                child:  Center(child: Text(names[index])),
+                child:  Center(child: Text(names[index].tr())),
               ),
             );
           } ,
