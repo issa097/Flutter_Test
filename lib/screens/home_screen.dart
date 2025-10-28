@@ -3,6 +3,7 @@ import 'package:untitled2/screens/custom_continer.dart';
 import 'package:untitled2/screens/drawar_screen.dart' show DrawarScreen;
 import 'package:untitled2/screens/firsts_screen.dart';
 import 'package:untitled2/screens/images.dart';
+import 'package:untitled2/screens/item_screen.dart' show ItemScreen;
 import 'package:untitled2/screens/list_view_bulder_screen.dart' show ListViewBulderScreen;
 import 'package:untitled2/screens/list_view_grid_screen.dart' show ListViewGridScreen;
 import 'package:untitled2/screens/list_view_screen.dart';
@@ -33,7 +34,8 @@ class _HomeScreenState extends State<HomeScreen> {
     ListViewSeparatorScreen(),
     ListViewGridScreen(),
     Images(),
-    DrawarScreen()
+    DrawarScreen(),
+    ItemScreen()
   ];
   @override
   Widget build(BuildContext context) {
@@ -59,6 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.favorite),label: "favorite", backgroundColor: Colors.black),
           BottomNavigationBarItem(icon: Icon(Icons.login),label: "favorite", backgroundColor: Colors.blue),
           BottomNavigationBarItem(icon: Icon(Icons.logout),label: "favorite", backgroundColor: Colors.blue),
+          BottomNavigationBarItem(icon: Icon(Icons.logout),label: "favorite", backgroundColor: Colors.pink),
           BottomNavigationBarItem(icon: Icon(Icons.logout),label: "favorite", backgroundColor: Colors.pink),
           BottomNavigationBarItem(icon: Icon(Icons.logout),label: "favorite", backgroundColor: Colors.pink),
           BottomNavigationBarItem(icon: Icon(Icons.logout),label: "favorite", backgroundColor: Colors.pink),

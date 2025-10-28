@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http show post;
 import 'package:shared_preferences/shared_preferences.dart'
     show SharedPreferences;
 import 'package:untitled2/core/const/svg_const.dart' show SvgConst;
+import 'package:untitled2/core/utils/Responsive.dart' show ResponsiveHeight;
 import 'package:untitled2/screens/home_screen.dart';
 import 'package:untitled2/screens/sign_up.dart';
 
@@ -27,6 +28,8 @@ class _LoginState extends State<Login> {
   bool isRem = false;
 
   Widget build(BuildContext context) {
+    var h = MediaQuery.of(context).size.height;
+    var w = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: SvgPicture.asset(SvgConst.flutter_svg),
@@ -55,7 +58,7 @@ class _LoginState extends State<Login> {
                 "Welcome".tr(),
                 style: TextStyle(color: Colors.blue, fontSize: 25),
               ),
-              SizedBox(height: 55),
+              SizedBox(height:ResponsiveHeight(context,55) ),
               TextField(
                 controller: emailController,
                 decoration: InputDecoration(
