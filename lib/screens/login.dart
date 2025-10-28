@@ -6,12 +6,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart' as http show post;
 import 'package:shared_preferences/shared_preferences.dart'
     show SharedPreferences;
+import 'package:untitled2/core/const/api_body.dart' show ApiBody;
+import 'package:untitled2/core/const/api_const.dart' show ApiConst;
 import 'package:untitled2/core/const/svg_const.dart' show SvgConst;
 import 'package:untitled2/core/utils/Responsive.dart' show ResponsiveHeight;
 import 'package:untitled2/screens/home_screen.dart';
 import 'package:untitled2/screens/sign_up.dart';
 
-import '../core/utils/shared_preferences_helper.dart' show SharedPreferencesHelper;
+import '../core/utils/shared_preferences_helper.dart'
+    show SharedPreferencesHelper;
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -58,7 +61,7 @@ class _LoginState extends State<Login> {
                 "Welcome".tr(),
                 style: TextStyle(color: Colors.blue, fontSize: 25),
               ),
-              SizedBox(height:ResponsiveHeight(context,55) ),
+              SizedBox(height: ResponsiveHeight(context, 55)),
               TextField(
                 controller: emailController,
                 decoration: InputDecoration(
@@ -103,7 +106,10 @@ class _LoginState extends State<Login> {
 
               ElevatedButton(
                 onPressed: () async {
-                  login(Username: emailController.text, Password: pasController.text);
+                  login(
+                    Username: emailController.text,
+                    Password: pasController.text,
+                  );
                 },
                 child: Text("Login".tr()),
               ),
@@ -132,25 +138,21 @@ class _LoginState extends State<Login> {
     );
   }
 
-
-
-
-  login ({required String Username , required String Password})async{
-
+  login({required String Username, required String Password}) async {
     isloding = true;
-    setState((){});
+    setState(() {});
     final res = await http.post(
-      Uri.parse("http://10.0.2.2:5027/api/Users/login"),
-      body: jsonEncode({"username": Username, "password": Password}),
-      headers: {"Content-Type":"application/json"},
-
+      Uri.parse(ApiConst.Login_URL),
+      body: jsonEncode({
+        ApiBody.Username: Username,
+        ApiBody.Password: Password,
+      }),
+      headers: {"Content-Type": "application/json"},
     );
-isloding = false;
-setState(() {
-
-});
-print(res.body);
-print(res.statusCode);
+    isloding = false;
+    setState(() {});
+    print(res.body);
+    print(res.statusCode);
     print(res);
     print(Password);
     print(Username);
@@ -166,8 +168,5 @@ print(res.statusCode);
         MaterialPageRoute(builder: (context) => HomeScreen()),
       );
     }
-
-    }
+  }
 }
-
-
